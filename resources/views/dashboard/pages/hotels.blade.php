@@ -35,12 +35,12 @@
         <div class="box">
           <div class="box-header">
               <!-- Start Form add Category -->
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCategory">Add New Hotel</button>
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addCategory">Add New hotel</button>
               <div class="modal fade bd-example-modal-sm" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
               <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add New Hotel</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Hotel..</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
