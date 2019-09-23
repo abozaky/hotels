@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
     {
 
         // $this->call(ProductBrandsTableSeeder::class);        
-        
+        $path = 'app/developer_docs/countries.sql';
+        DB::unprepared(file_get_contents($path));
+    
         }
 }

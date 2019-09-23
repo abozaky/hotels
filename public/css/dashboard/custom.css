@@ -4,3 +4,12 @@
 .offer{
 	display: none;
 }
+.tab-pane {
+    padding:20px;
+}
+
+.hide {
+    display: none;
+ }
+
+ 

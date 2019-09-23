@@ -8,7 +8,22 @@
         
         <li class="active" ><a href="{{ route('index.index') }}"><i class="fa fa-dashboard"></i> <span>Home Page</span></a></li> 
         <li><a href=""><i class="fa fa-users"></i> <span>Users</span></a></li>
-        <li><a href="{{route('hotels.index')}}"><i class="fa fa-users"></i> <span>Hotels</span></a></li>
+        
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-laptop"></i>
+            <span>Hotels</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu" style="display: none;">
+              <li><a href="{{route('hotels.index')}}"><i class="fa fa-users"></i> <span>All Hotels</span></a></li>
+              <li><a href="{{route('Add_New_Hotel.index')}}"><i class="fa fa-users"></i> <span>Add New Hotel</span></a></li>
+              
+              
+            </ul>
+          </li>
         
       </ul>
     </section>

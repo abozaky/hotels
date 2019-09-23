@@ -15,7 +15,7 @@ class CreateHotelTranslationsTable extends Migration
     {
         Schema::create('hotel_translations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('locale');
+            $table->string('locale',4);
             $table->string('name');
             $table->string('description');
             $table->string('address');

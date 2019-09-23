@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Cities extends Model
+class Localization extends Model
 {
     //
 }
