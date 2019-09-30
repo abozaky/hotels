@@ -4,6 +4,10 @@ namespace App\Http\Controllers\dashboard;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\HotelTranslation;
+use App\Hotel;
+use App\countries;
+use App\Localization;
 
 class HotelsController extends Controller
 {
@@ -14,7 +18,8 @@ class HotelsController extends Controller
      */
     public function index()
     {
-        return view('dashboard/pages/hotels');
+        $HotelTranslation = HotelTranslation::where('locale','En')->get();
+        return view('dashboard/pages/hotels',compact('HotelTranslation'));
     }
 
     /**
@@ -35,31 +40,7 @@ class HotelsController extends Controller
      */
     public function store(Request $request)
     {
-        // first validation
-       
-        return $request;
-        $request->validate(['name' => 'required',
-                             'description' => 'required|max:100',
-                             'image' => 'required|image|mimes:jpeg,png,jpg|max:2048'   ]);
-
-        
-        $Category = new Category();
-        $Category->name = $request->input('name');
-        $Category->description = $request->input('description');
-
-        // condition to check image is exist or not -> " nulable "
-        if ($request->hasfile('image')) {
-            $imageName = time().'.'.request()->image->getClientOriginalExtension();
-            request()->image->move(public_path('Categories_Image'), $imageName);
-            $Category->photo = $imageName;
-        }else{
-
-            $Category->photo = '';
-        }
-
-        $Category->save();
-        
-        return redirect('/dashboard/categories')->with('success','Category added');
+      
     }
 
     /**
@@ -81,7 +62,10 @@ class HotelsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $countries = countries::all();
+        $Hotels = Hotel::where('id',$id)->first();
+        $HotelTranslation = HotelTranslation::where('hotel_id',$id)->get();
+        return view('dashboard/pages/Edit_hotel_translation',compact('countries','HotelTranslation','Hotels'));
     }
 
     /**
@@ -93,7 +77,36 @@ class HotelsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // return $request;
+        $Hotel = Hotel::find($id);
+
+        $Hotel->country_id = $request->get('country_id');
+        $Hotel->stars = $request->get('stars');
+          // query to Edit multiple files and check before add
+          if( $request->hasfile('images') )
+          {
+             foreach( $request->file('images') as $image )
+             {
+              $imageName = time().'.'.$image->getClientOriginalName();
+              $image->move(public_path('hotel_Images'), $imageName);
+              $data[] = $imageName;  
+              $Hotel->photos = json_encode($data);
+             }
+          }
+        $Hotel->save();
+
+        $languages = Localization::all();
+        foreach ($languages as $language) {
+
+            $HotelTranslation = HotelTranslation::where('hotel_id', $id)->where('locale',$language->name)->first();
+            $HotelTranslation->name = $request->get('hotel_Name='.$language->name);
+            $HotelTranslation->description = $request->get('description='.$language->name);
+            $HotelTranslation->address = $request->get('address='.$language->name);
+            $HotelTranslation->save();
+        }
+        return redirect()->back()->with('success','Hotel Updated');
+
+     
     }
 
     /**
@@ -104,6 +117,9 @@ class HotelsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $Hotel = Hotel::find($id);
+        $Hotel->delete();
+    
+      return redirect()->back()->with('success','Data Deeleted');
     }
 }

@@ -7,19 +7,18 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-
     <h1>
-      Hotels    
+     All Hotels    
       <small>  
         <!-- session to display message from AllusersController -->
-        @if (Session('success'))
-
-          <h3 class="label label-success " role="alert">
+         @if (Session('success'))
+        
+         <h3 class="label label-success " role="alert">
            {{ Session('success') }}
           </h3>
-
-        @endif  
-    </small>
+       
+          @endif  
+      </small>
     </h1>
    
     <ol class="breadcrumb">
@@ -32,39 +31,33 @@
   <section class="content">
     <div class="row">
       <div class="col-xs-12">
-        <div class="box">
-          
+        <div class="box">  
           <!-- /.box-header -->
           <div class="box-body table-responsive no-padding">
             <table class="table table-hover">
               <tr>
                 <th>ID</th>
-                <th>Category Name</th>
-                <th>Description</th>
-                <th>image</th>
-                <th colspan="2" class="text-center" >Action</th>
-                
+                <th>Name</th>
+                <th>Address</th>
               </tr>
-              <!-- to fetach array to table from Orders_Controller -->
-              
-               
-              <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td><a href="">Show Photo</a>
-                </td>
-                <td>
-                edit
-                </td>
-                <td> 
 
-                  delete
-                        
-                </td>
-              <tr>
-
-    
+              @foreach ($HotelTranslation as $Hotels )
+                <tr>
+                  <td>{{$Hotels->id}}</td>
+                  <td>{{$Hotels->name}}</td>
+                  <td>{{$Hotels->address}}</td>
+                  <td class="text-center">
+                      <a class="btn btn-primary" href="{{ route('hotels.edit',['hotelID'=> $Hotels['hotel_id']] )}}">Edit</a>
+                  </td>
+                  <td > 
+                      <form action="{{ route('hotels.destroy',['hotelID'=> $Hotels['hotel_id']] )}}" method="post">
+                          <input class="btn-sm btn-danger" type="submit" value="Delete" />
+                          @method('delete')
+                          @csrf
+                      </form>   
+                  </td>    
+                <tr>
+              @endforeach
             </table>
           </div>
           <!-- /.box-body -->

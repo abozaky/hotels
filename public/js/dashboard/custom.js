@@ -1,8 +1,8 @@
 $(document).ready(function() {
-        $('#summernote').summernote({
+        $('.summernote').summernote({
         	 placeholder: 'write Your Article',
         tabsize: 5,
-        height: 300
+        height: 200
         });
     });
 

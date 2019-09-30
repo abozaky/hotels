@@ -17,14 +17,12 @@
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu" style="display: none;">
-              <li><a href="{{route('hotels.index')}}"><i class="fa fa-users"></i> <span>All Hotels</span></a></li>
-              <li><a href="{{route('Add_New_Hotel.index')}}"><i class="fa fa-users"></i> <span>Add New Hotel</span></a></li>
-              
-              
+            <ul class="treeview-menu" style="display: none;">
+                <li><a href="{{route('hotels.index')}}"><i class="fa fa-users"></i> <span>All Hotels</span></a></li>
+                <li><a href="{{route('Add_New_Hotel.index')}}"><i class="fa fa-users"></i> <span>Add New Hotel</span></a></li>
             </ul>
-          </li>
-        
+        </li>
+        <li><a href="{{route('policies_conditions.index')}}"><i class="fa fa-users"></i> <span>Policies and Conditions</span></a></li> 
       </ul>
     </section>
     <!-- /.sidebar -->

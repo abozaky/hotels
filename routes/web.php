@@ -19,6 +19,7 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function() {
 		Route::resource('/index', 'dashboard\indexController');
 		Route::resource('/hotels', 'dashboard\HotelsController');
 		Route::resource('/Add_New_Hotel', 'dashboard\Add_HotelsController');
+		Route::resource('/policies_conditions', 'dashboard\policies_conditions');
 		
 
 	});
