@@ -40,18 +40,16 @@
                 <th>Name</th>
                 <th>Address</th>
               </tr>
-
               @foreach ($HotelTranslation as $Hotels )
                 <tr>
                   <td>{{$Hotels->id}}</td>
                   <td>{{$Hotels->name}}</td>
                   <td>{{$Hotels->address}}</td>
                   <td class="text-center">
-                      <a class="btn btn-primary" href="{{ route('hotels.edit',['hotelID'=> $Hotels['hotel_id']] )}}">Edit</a>
-                  </td>
-                  <td > 
-                      <form action="{{ route('hotels.destroy',['hotelID'=> $Hotels['hotel_id']] )}}" method="post">
-                          <input class="btn-sm btn-danger" type="submit" value="Delete" />
+                      <a class="btn btn-info" href="{{ route('Rooms.show',['hotelID'=> $Hotels['hotel_id']] )}}">Add Rooms</a>
+                      <a class="btn btn-primary" href="{{ route('hotels.edit',['hotelID'=> $Hotels['hotel_id']] )}}">Edit Hotel</a>
+                      <form action="{{ route('hotels.destroy',['hotelID'=> $Hotels['hotel_id']] )}}" method="post" style="display:inline;">
+                          <input class="btn-sm btn-danger" type="submit" value="Delete Hotel" />
                           @method('delete')
                           @csrf
                       </form>   

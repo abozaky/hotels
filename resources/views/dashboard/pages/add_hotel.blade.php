@@ -45,7 +45,7 @@
           <ul class="nav nav-tabs" id="myForm">
             @foreach ($languages as $language )
               <li class="{{ $language->name == 'En' ? 'active' : '' }}"><a href="#{{$language->name}}">{{$language->title}} Translation</a></li> 
-            @endforeach
+              @endforeach
           </ul>
           <form action="{{ route('Add_New_Hotel.store') }}" method="post" enctype="multipart/form-data">
             @csrf
@@ -58,7 +58,6 @@
                     </select>
                   
                </div>
-         
                <div class="edit" style="margin:13px; margin-bottom:0px" >
                     <label for="exampleFormControlSelect1">Select Stars </label>
                     <select class="form-control" name="stars" id="exampleFormControlSelect1">
@@ -94,7 +93,7 @@
 
                       <div class="form-group">
                           <label for="exampleInputEmail1">description {{$language->name}}</label>
-                          <input type="text" class="form-control" name="description={{$language->name}}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter hotel description">
+                          <textarea class="summernote"  name="description={{$language->name}}" ></textarea>
                       </div> 
                       
                       <div class="form-group">
@@ -104,7 +103,7 @@
 
                         <button type="submit" class="btn btn-primary {{ $language->name == 'En' ? '' : 'hide' }} ">Submit</button>      
                   </div>        
-                @endforeach
+                 @endforeach
               </div>
           </form>
         {{--/.form  --}} 

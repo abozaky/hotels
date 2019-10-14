@@ -15,7 +15,7 @@ class CreateHotelsTable extends Migration
     {
         Schema::create('hotels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('photos');
+            $table->longText('photos');
             $table->tinyInteger('stars');
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');

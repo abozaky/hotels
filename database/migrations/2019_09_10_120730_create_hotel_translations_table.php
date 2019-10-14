@@ -17,7 +17,7 @@ class CreateHotelTranslationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('locale',4);
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->string('address');
             $table->unsignedBigInteger('hotel_id');
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade')->onUpdate('cascade');

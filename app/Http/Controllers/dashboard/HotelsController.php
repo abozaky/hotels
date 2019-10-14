@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\HotelTranslation;
 use App\Hotel;
-use App\countries;
+use App\country;
 use App\Localization;
 
 class HotelsController extends Controller
@@ -22,37 +22,6 @@ class HotelsController extends Controller
         return view('dashboard/pages/hotels',compact('HotelTranslation'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-      
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -62,7 +31,7 @@ class HotelsController extends Controller
      */
     public function edit($id)
     {
-        $countries = countries::all();
+        $countries = country::all();
         $Hotels = Hotel::where('id',$id)->first();
         $HotelTranslation = HotelTranslation::where('hotel_id',$id)->get();
         return view('dashboard/pages/Edit_hotel_translation',compact('countries','HotelTranslation','Hotels'));
@@ -82,17 +51,6 @@ class HotelsController extends Controller
 
         $Hotel->country_id = $request->get('country_id');
         $Hotel->stars = $request->get('stars');
-          // query to Edit multiple files and check before add
-          if( $request->hasfile('images') )
-          {
-             foreach( $request->file('images') as $image )
-             {
-              $imageName = time().'.'.$image->getClientOriginalName();
-              $image->move(public_path('hotel_Images'), $imageName);
-              $data[] = $imageName;  
-              $Hotel->photos = json_encode($data);
-             }
-          }
         $Hotel->save();
 
         $languages = Localization::all();
@@ -105,8 +63,6 @@ class HotelsController extends Controller
             $HotelTranslation->save();
         }
         return redirect()->back()->with('success','Hotel Updated');
-
-     
     }
 
     /**
@@ -122,4 +78,5 @@ class HotelsController extends Controller
     
       return redirect()->back()->with('success','Data Deeleted');
     }
+  
 }

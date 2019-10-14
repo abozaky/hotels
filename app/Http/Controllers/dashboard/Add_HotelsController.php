@@ -5,7 +5,7 @@ namespace App\Http\Controllers\dashboard;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Localization;
-use App\countries;
+use App\country;
 use App\hotel;
 use App\HotelTranslation;
 
@@ -19,20 +19,11 @@ class Add_HotelsController extends Controller
     public function index()
     {
         $languages = Localization::all();
-        $countries = countries::all();
+        $countries = country::all();
         
         return view('dashboard/pages/add_hotel',compact('languages','countries'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
     
     /**
      * Store a newly created resource in storage.
@@ -100,48 +91,4 @@ class Add_HotelsController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

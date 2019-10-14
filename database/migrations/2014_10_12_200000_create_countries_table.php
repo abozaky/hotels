@@ -18,8 +18,8 @@ class CreateCountriesTable extends Migration
             $table->string('country_code',2);
             $table->string('country_enName',100);
             $table->string('country_arName',100);
-            $table->string('country_enNationality',100);
-            $table->string('country_arNationality',100);
+            $table->string('country_enNationality',100)->nullable();
+            $table->string('country_arNationality',100)->nullable();
             $table->timestamps();
         });
     }
