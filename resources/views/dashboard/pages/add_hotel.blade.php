@@ -50,13 +50,16 @@
           <form action="{{ route('Add_New_Hotel.store') }}" method="post" enctype="multipart/form-data">
             @csrf
                <div class="edit" style="margin:13px; margin-bottom:0px" >
-                    <label for="exampleFormControlSelect1">Select Country </label>
-                    <select class="form-control" name="country_id" id="exampleFormControlSelect1">
+                    <label for="countries">Select Country </label>
+                    <select class="form-control" name="country_id" id="countries">
+                      <option value="">Please Choose Hotel Country</option>
                       @foreach ($countries as $country)
                         <option value="{{$country->id}}">{{$country->country_enName}} -{{ $country->country_arName }}</option>
                       @endforeach  
                     </select>
-                  
+               </div>
+               <div class="edit cities" style="margin:13px; margin-bottom:0px" >
+                  {{-- this select return from ajax  --}}
                </div>
                <div class="edit" style="margin:13px; margin-bottom:0px" >
                     <label for="exampleFormControlSelect1">Select Stars </label>

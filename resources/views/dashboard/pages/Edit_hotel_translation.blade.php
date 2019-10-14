@@ -47,13 +47,22 @@
             @csrf
             @method('PUT')
             <div class="edit" style="margin:13px; margin-bottom:0px" >
-                <label for="exampleFormControlSelect1">Select Country </label>
-                <select class="form-control" name="country_id" id="exampleFormControlSelect1">
+                <label for="countries">Select Country </label>
+                <select class="form-control" name="country_id" >
                     @foreach ($countries as $country)
                         <option value="{{$country->id}}" {{ ($country->id ==  $Hotels->country_id) ? 'selected' : ''  }}>{{$country->country_enName}} -{{ $country->country_arName }}</option>
                     @endforeach  
                 </select>
-            </div>
+              </div>
+            <div class="edit" style="margin:13px; margin-bottom:0px" >
+                <label for="countries">Select City </label>
+                <select class="form-control" name="city_id">
+                    @foreach ($cities as $city)
+                        <option value="{{$city->id}}" {{ ($city->id ==  $Hotels->city_id) ? 'selected' : ''  }}>{{$city->city_enName}} -{{ $city->city_arName }}</option>
+                    @endforeach  
+                </select>
+              </div>
+           
             <div class="edit" style="margin:13px; margin-bottom:0px" >
                 <label for="exampleFormControlSelect1">Select Stars </label>
                 <select class="form-control" name="stars" id="exampleFormControlSelect1">

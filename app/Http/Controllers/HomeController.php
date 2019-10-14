@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\city;
+
 
 class HomeController extends Controller
 {
@@ -25,4 +27,17 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+      /**
+     * this functionn to search in cities table by country id (ajax) used in add_newHotel page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function ajaxCities($id)
+    {
+        $cities = city::where('country_id',$id)->get();
+        return response()->json(['cities'=>$cities]);
+
+    }
+
 }

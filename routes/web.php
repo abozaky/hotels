@@ -25,7 +25,11 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function() {
 		Route::resource('/Rooms', 'dashboard\RoomsController');
 		Route::resource('/Add_New_Hotel', 'dashboard\Add_HotelsController');
 		Route::resource('/policies_conditions', 'dashboard\policies_conditions');
+		Route::get('/ajaxRequest/{country_id}', 'HomeController@ajaxCities');
+
+		
 	});
+	
 
 Route::get('/home', 'HomeController@index')->name('home');
 

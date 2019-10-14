@@ -39,6 +39,7 @@ class Add_HotelsController extends Controller
         $request->validate([
  
             'country_id'      => 'required|numeric' ,
+            'city_id'         => 'required|numeric' ,
             'stars'           => 'required|numeric' ,
             'locale=En'       => 'required|string'  ,
             'hotel_Name=En'   => 'required|string'  ,
@@ -70,6 +71,7 @@ class Add_HotelsController extends Controller
         // insert data to hotel table and get Hotel ID to used it to hotel_translation table
             $hotel->stars = $request->get('stars');
             $hotel->country_id = $request->get('country_id');
+            $hotel->city_id = $request->get('city_id');
             
             $hotel->save();
             $currentId = $hotel->id;
@@ -90,5 +92,13 @@ class Add_HotelsController extends Controller
             return redirect()->back()->with('success','Hotel Added');
 
     }
+    
+  
+    public function ajaxCities($id)
 
+    {
+        $cities = city::where('country_id',$id)->get();
+        return response()->json(['cities'=>$cities]);
+
+    }
 }
