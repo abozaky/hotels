@@ -27,6 +27,6 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function() {
 		Route::resource('/policies_conditions', 'dashboard\policies_conditions');
 	});
 
-// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
