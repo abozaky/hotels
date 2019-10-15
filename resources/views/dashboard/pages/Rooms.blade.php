@@ -48,8 +48,6 @@
                 </tr>
                 </thead>
                 <tbody>
-
-
                     @foreach ($Rooms as $Room)
                     <tr>
                         <td>{{$Room->room->room_number}}</td>
