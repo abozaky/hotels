@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Localization;
 use App\Room;
 use App\RoomTranslation;
+use App\HotelTranslation;
 
 class RoomsController extends Controller
 {
@@ -18,8 +19,11 @@ class RoomsController extends Controller
     public function index()
     {
         $Rooms = RoomTranslation::where('locale','En')->with('room')->get();
-        return view('dashboard/pages/Rooms',compact('Rooms'));
 
+        foreach ($Rooms as $room){
+            $hotelName[]= HotelTranslation::where('hotel_id',$room->room->hotel_id)->first();
+        }
+        return view('dashboard/pages/Rooms',compact('Rooms','hotelName'));
     }
 
     /**
@@ -30,9 +34,9 @@ class RoomsController extends Controller
      */
     public function show($hotelID)
     {
-        
+
         $languages = Localization::all();
-        
+
         return view('dashboard/pages/Add_Rooms',compact('languages','hotelID'));
 
     }
@@ -46,10 +50,10 @@ class RoomsController extends Controller
     public function store(Request $request)
     {
         //    return $request ;
-        
+
         // validation data before insert data to db
         $request->validate([
- 
+
             'room_number'                 => 'required|numeric' ,
             'price_adult'                 => 'required|numeric' ,
             'price_child'                 => 'required|numeric' ,
@@ -57,12 +61,12 @@ class RoomsController extends Controller
             'locale=En'                   => 'required|string'  ,
             'name=En'                     => 'required|string'  ,
             'options=En'                  => 'required|string'  ,
-            'cancelation_details=En'      => 'required'         ,   
+            'cancelation_details=En'      => 'required'         ,
             'locale=Ar'                   => 'required|string'  ,
             'name=Ar'                     => 'required|string'  ,
             'options=Ar'                  => 'required|string'  ,
-            'cancelation_details=Ar'      => 'required'   ,      
-          
+            'cancelation_details=Ar'      => 'required'   ,
+
         ]) ;
 
         // insert data to rooms table and get room ID to used it to room_translation table
@@ -73,8 +77,8 @@ class RoomsController extends Controller
             $Room->hotel_id = $request->get('hotel_id');
             $Room->save();
             $currentId = $Room->id;
-        // insert data to hotel_translation by Hotel_id 
-            
+        // insert data to hotel_translation by Hotel_id
+
             $languages = Localization::all();
             foreach ($languages as $language) {
 
@@ -85,13 +89,13 @@ class RoomsController extends Controller
                 $RoomTranslation->cancelation_details = $request->get('cancelation_details='.$language->name);
                 $RoomTranslation->room_id = $currentId;
                 $RoomTranslation->save();
-            
+
             }
             return redirect()->back()->with('success','Room Added');
 
     }
 
-    
+
 
     /**
      * Show the form for editing the specified resource.
@@ -122,10 +126,10 @@ class RoomsController extends Controller
          $Room->price_adult = $request->get('price_adult');
          $Room->price_child = $request->get('price_child');
          $Room->save();
- 
+
          $languages = Localization::all();
          foreach ($languages as $language) {
- 
+
              $RoomTranslation = RoomTranslation::where('room_id', $id)->where('locale',$language->name)->first();
              $RoomTranslation->name = $request->get('name='.$language->name);
              $RoomTranslation->options = $request->get('options='.$language->name);
@@ -145,7 +149,7 @@ class RoomsController extends Controller
     {
         $Room = Room::find($id);
         $Room->delete();
-    
+
       return redirect()->back()->with('success','Room Deeleted');
     }
 }

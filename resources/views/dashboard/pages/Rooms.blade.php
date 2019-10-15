@@ -8,13 +8,13 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      <small>  
+      <small>
         <!-- session to display message from AllusersController -->
         @if (Session('success'))
           <h3 class="label label-success " role="alert">
            {{ Session('success') }}
           </h3>
-        @endif  
+        @endif
       </small>
     </h1>
     <ol class="breadcrumb">
@@ -33,13 +33,14 @@
               <h3 class="box-title">All Rooms</h3>
             </div>
             <!-- /.box-header -->
-           
+
             <div class="box-body">
               <table id="example1" class="datatable table table-bordered table-striped ">
                 <thead>
                 <tr>
                   <th>Room Number</th>
                   <th>Room Name</th>
+                  <th>Hotel Name</th>
                   <th>Available  From</th>
                   <th>Available  To</th>
                   <th>availability</th>
@@ -47,10 +48,17 @@
                 </tr>
                 </thead>
                 <tbody>
+
+
                     @foreach ($Rooms as $Room)
                     <tr>
                         <td>{{$Room->room->room_number}}</td>
                         <td>{{$Room->name}}</td>
+                            @for ($i = 0; $i < count($hotelName); $i++)
+                                @if($Room->room->hotel_id == $hotelName[$i]['hotel_id'])
+                                    <td>{{str_limit($hotelName[$i]['name'], 15)}}</td>
+                                @endif
+                            @endfor
                         <td>{{$Room->room->not_avilable_from}}</td>
                         <td>{{$Room->room->not_avilable_to}}</td>
                         <td>{{$Room->room->avilable == 0 ? 'free' : 'busy'  }}</td>
@@ -60,7 +68,7 @@
                                 <input class="btn-sm btn-danger" type="submit" value="Delete" />
                                 @method('delete')
                                 @csrf
-                            </form>   
+                            </form>
                         </td>
                     </tr>
                     @endforeach
