@@ -10,4 +10,10 @@ class city extends Model
     {
         return $this->belongsTo('App\country', 'country_id', 'id');
     }
+
+    public function Hotels()
+    {
+        return $this->hasMany('App\Hotel', 'city_id');
+    }
+
 }

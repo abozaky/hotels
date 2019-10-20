@@ -5,8 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
-
+                            <a href="{{ url('/auth/redirect/facebook') }}" class="btn btn-primary"><i class="fa fa-facebook"></i> Facebook</a>
+                            <div class="card-header">{{ __('Login') }}  </div>
+             
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
@@ -67,6 +68,8 @@
                     </form>
                 </div>
             </div>
+           
+           
         </div>
     </div>
 </div>

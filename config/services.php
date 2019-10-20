@@ -44,4 +44,10 @@ return [
         ],
     ],
 
+    'facebook' => [
+        'client_id' => '800748783716261',
+        'client_secret' => 'c5f661f638e25791a8854c1b165baecb',
+        'redirect' => 'http://localhost/hotels/public/callback/facebook',
+      ], 
+
 ];

@@ -30,11 +30,23 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
+    Route::get('redirect/{provider}', 'AuthControllerFacebook@redirect');
+    Route::get('/callback/facebook', 'AuthControllerFacebook@callback')->name('test');
+});
 
+Route::get('/', function () {
+    return ['SearchByCityAndCheckin'=>url('api/searchhotels'),
+            'AllHotels'=>url('api/hotels'),
+            'HotelsFilter'=>url('api/hotelsfilter'),
+        
+          ];
 });
 
 
-// Route::get('/','api\IndexController@index' );
+Route::get('/searchhotels','api\SearchController@index' );
+Route::get('/hotelsfilter','api\HotelsFilterController@index' );
+Route::get('/hotels','api\AllHotelsController@index' );
+
 // Route::get('/categories','api\CategoryController@index' );
 
 // Route::get('/products','api\ProductController@index' );

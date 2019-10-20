@@ -18,8 +18,6 @@ class CreateRoomsTable extends Migration
             $table->integer('room_number');
             $table->integer('price_adult');
             $table->integer('price_child');
-            $table->dateTime('not_avilable_from')->nullable();
-            $table->dateTime('not_avilable_to')->nullable();
             $table->boolean('avilable')->default(false);
             $table->unsignedBigInteger('hotel_id');
             $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade')->onUpdate('cascade');

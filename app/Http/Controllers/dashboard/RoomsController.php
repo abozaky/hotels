@@ -19,10 +19,7 @@ class RoomsController extends Controller
     public function index()
     {
         $Rooms = RoomTranslation::where('locale','En')->with('room')->get();
-
-        foreach ($Rooms as $room){
-            $hotelName[]= HotelTranslation::where('hotel_id',$room->room->hotel_id)->first();
-        }
+        $hotelName= HotelTranslation::where('locale','En')->get();
         return view('dashboard/pages/Rooms',compact('Rooms','hotelName'));
     }
 
