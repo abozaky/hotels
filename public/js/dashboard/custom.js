@@ -40,7 +40,7 @@ $('#countries').change(function(){
     type: 'GET',
 
     // url: '/hotels/public/dashboard/ajaxRequest/'+val,
-    url:'/hotels360.herokuapp.com/dashboard/ajaxRequest/'+val,
+    url:'/dashboard/ajaxRequest/'+val,
     success: function (data) {
 
       // console.log(data);
