@@ -11,9 +11,9 @@ class Hotel extends Model
      *
      * @var array
      */
-    protected $hidden = [
-        'updated_at', 'created_at',
-    ];
+    // protected $hidden = [
+    //     'updated_at', 'created_at',
+    // ];
 
     public function hotelTranslation()
     {

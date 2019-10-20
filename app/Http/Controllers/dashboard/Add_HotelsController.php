@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Localization;
 use App\country;
-use App\hotel;
+use App\Hotel;
 use App\HotelTranslation;
 
 class Add_HotelsController extends Controller
@@ -53,7 +53,7 @@ class Add_HotelsController extends Controller
         ]) ;
 
         // return $_FILES["images"];
-        $hotel = new hotel();
+        $hotel = new Hotel();
 
         // query to add multiple files and check before add
         if( $request->hasfile('images') )
