@@ -74,5 +74,21 @@ $('#countries').change(function(){
   
 })
 
+ //Date picker
+ $('.datepicker').datepicker({
+  format: 'yyyy/mm/dd',
+  autoclose: true,
+  todayHighlight: true
+})
 
+// Add multi input (Nationality)
+function addInput(){
+  var newdiv = document.createElement('div');
+  newdiv.className = "form-group col-md-2"
+  newdiv.innerHTML = "<label>Nationality</label><input type='text' class='form-control' name='nationality[]'> <input type='button' value='-' onClick='removeInput(this);'>";
+  document.getElementById('formulario').appendChild(newdiv);
+}
 
+function removeInput(btn){
+    btn.parentNode.remove();
+}

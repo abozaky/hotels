@@ -13,11 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-
 Route::group([
 
     'middleware' => 'api',
@@ -30,9 +25,15 @@ Route::group([
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
     Route::post('me', 'AuthController@me');
-    Route::get('redirect/{provider}', 'AuthControllerFacebook@redirect');
-    Route::get('/callback/facebook', 'AuthControllerFacebook@callback')->name('test');
+    // login with facebook by laravel/socialite package
+    Route::get('/redirect/{provider}', 'Auth\SocialController@redirect');
+    Route::get('/callback/{provider}', 'Auth\SocialController@callback');
+    // end login by facebook
+
+
 });
+
+
 
 Route::get('/', function () {
     return ['SearchByCityAndCheckin'=>url('api/searchhotels'),

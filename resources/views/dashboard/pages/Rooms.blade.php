@@ -61,6 +61,7 @@
                         <td>{{$Room->room->not_avilable_to}}</td>
                         <td>{{$Room->room->avilable == 0 ? 'free' : 'busy'  }}</td>
                         <td>
+                            <a class="btn btn-info" href="{{ route('pricing_list.show',['RoomID'=>$Room->room->id] )}}">Add Price</a>
                             <a class="btn btn-primary" href="{{ route('Rooms.edit',['RoomID'=>$Room->room->id] )}}">Edit</a>
                             <form action="{{ route('Rooms.destroy',['RoomID'=> $Room->room->id ] )}}" method="post" style="display:inline;">
                                 <input class="btn-sm btn-danger" type="submit" value="Delete" />

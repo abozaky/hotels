@@ -46,7 +46,7 @@ class RoomsController extends Controller
      */
     public function store(Request $request)
     {
-        //    return $request ;
+           return $request ;
 
         // validation data before insert data to db
         $request->validate([

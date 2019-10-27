@@ -13,7 +13,9 @@
   <link rel="stylesheet" href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('bower_components/Ionicons/css/ionicons.min.css') }}">
-   <!-- DataTables -->
+   <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="{{ asset('bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+  <!-- DataTables -->
   <link rel="stylesheet" href="{{ asset('bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css') }}">
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('css/dashboard/AdminLTE.min.css') }}">
@@ -74,9 +76,9 @@
 <script src="{{ asset('bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
 <!-- Morris.js charts -->
 <script src="{{ asset('bower_components/raphael/raphael.min.js') }}"></script>
-
+<!-- bootstrap datepicker -->
+<script src="{{ asset('bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}"></script>
 <!-- AdminLTE App -->
-
 <script src="{{ asset('js/dashboard/adminlte.min.js') }}"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('js/dashboard/pages/dashboard.js') }}"></script>

@@ -15,10 +15,7 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/home', 'HomeController@index')->name('home');
 
-// login with facebook by laravel/socialite package
-Route::get('/auth/redirect/{provider}', 'Auth\SocialController@redirect');
-Route::get('/callback/{provider}', 'Auth\SocialController@callback');
-// end login by facebook
+
 
 Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function() {
 
@@ -32,7 +29,7 @@ Route::group(['prefix' => 'dashboard' , 'middleware' => 'auth'], function() {
 		Route::resource('/Add_New_Hotel', 'dashboard\Add_HotelsController');
 		Route::resource('/policies_conditions', 'dashboard\policies_conditions');
 		Route::get('/ajaxRequest/{country_id}', 'HomeController@ajaxCities');
-
+		Route::resource('/pricing_list', 'dashboard\pricing_listController');
 		
 	});
 	
