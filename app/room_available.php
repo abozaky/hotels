@@ -8,6 +8,6 @@ class room_available extends Model
 {
     public function room()
     {
-        return $this->belongsTo('App\room', 'room_id', 'id');
+        return $this->belongsTo('App\Room', 'room_id', 'id');
     }
 }
