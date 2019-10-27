@@ -39,8 +39,8 @@ $('#countries').change(function(){
 
     type: 'GET',
 
-    // url: '/hotels/public/dashboard/ajaxRequest/'+val,
-    url:'/dashboard/ajaxRequest/'+val,
+    url: '/hotels/public/dashboard/ajaxRequest/'+val,
+    // url:'/dashboard/ajaxRequest/'+val,
     success: function (data) {
 
       // console.log(data);
