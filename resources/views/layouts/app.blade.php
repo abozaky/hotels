@@ -56,7 +56,7 @@
                             @endif
                         @else
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ url('/api') }}">{{ __('Api') }}</a>
+                                <a class="nav-link" href="{{ url('/api/documentation') }}">{{ __('Api') }}</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('index.index') }}">{{ __('Dashboard') }}</a>
