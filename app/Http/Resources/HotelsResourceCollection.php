@@ -14,12 +14,29 @@ class HotelsResourceCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        // return parent::toArray($request);
-         return [
+       
+         // return parent::toArray($request);
+        if(\Request::getPathInfo() == "/api/searchhotels"){
 
-        'Search_Hotels' => HotelsResource::collection($this->collection),
-            
-        ];
+            return [
+
+                'Search_Hotels' => HotelsResource::collection($this->collection),
+                
+            ];
+        }elseif(\Request::getPathInfo() == "/api/hotelsfilter"){
+
+            return [
+                'HotelsFilter' => HotelsResource::collection($this->collection),
+                
+            ];
+        }elseif(\Request::getPathInfo() == "/api/hotels"){
+
+            return [
+                'HotelsDefault' => HotelsResource::collection($this->collection),
+                
+            ];
+        }
+      
     }
 
     public function with($request)

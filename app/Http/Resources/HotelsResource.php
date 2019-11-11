@@ -15,15 +15,17 @@ class HotelsResource extends JsonResource
     public function toArray($request)
     {
         return parent::toArray($request);
-        // return [
-        //     'id' => $this->id,
-        //     'city_enName' => $this->city_enName,
-        //     'city_arName' => $this->city_arName,
-        //     'hotels' => $this->hotels,
-           
-               
-        //     ];
+       
     }
-
+    public function with($request)
+    {
+        
+        return [
+            
+                'Status' => 'success',
+                'Error' => 'No Errors Found',
+            
+        ];
+    }
    
 }

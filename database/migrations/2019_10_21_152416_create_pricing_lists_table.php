@@ -15,17 +15,11 @@ class CreatePricingListsTable extends Migration
     {
         Schema::create('pricing_lists', function (Blueprint $table) {
             $table->bigIncrements('id');
-
             $table->longText('nationality');
             $table->string('user_type')->default('guest');
-
-
-            $table->unsignedBigInteger('room_available_id');
-            $table->foreign('room_available_id')->references('id')->on('room_availables')->onDelete('cascade')->onUpdate('cascade');
-
-
             $table->string('price_adult');
             $table->string('price_child');
+            
             $table->timestamps();
         });
     }

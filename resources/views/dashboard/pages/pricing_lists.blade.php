@@ -24,7 +24,7 @@
     </ol>
   </section>
  <!-- Main content -->
- <section class="content">
+ <section class="content" >
     <div class="row">
         <div class="col-xs-12">
              <!-- /.box -->
@@ -53,15 +53,15 @@
                     @foreach ($pricingLists as $pricingList)
                     <tr>
                         <td>{{$pricingList->id}}</td>
-                        <td>{{$pricingList['roomAvailable']['date_from']}}</td>
-                        <td>{{$pricingList['roomAvailable']['date_to']}}</td>
+                        <td>{{$pricingList['roomAvailable'][0]['date_from']}}</td>
+                        <td>{{$pricingList['roomAvailable'][0]['date_to']}}</td>
                         <td>{{$pricingList->nationality}}</td>
                         <td>{{$pricingList->user_type}}</td>
-                        <td>{{  $pricingList['roomAvailable']['room']['RoomTranslation'][0]['name']  }}</td>
+                        <td>{{  $pricingList['roomAvailable'][0]['room']['RoomTranslation'][0]['name']  }}</td>
                         <td>{{$pricingList->price_adult}}</td>
                         <td>{{$pricingList->price_child}}</td>
                         <td>
-                            <form action="{{ route('pricing_list.destroy',['roomAvailable'=> $pricingList->room_available_id ] )}}" method="post" style="display:inline;">
+                            <form action="{{ route('pricing_list.destroy',['roomAvailable'=> $pricingList->id ] )}}" method="post" style="display:inline;">
                                 <input class="btn-sm btn-danger" type="submit" value="Delete" />
                                 @method('delete')
                                 @csrf

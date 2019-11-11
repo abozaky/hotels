@@ -54,21 +54,23 @@ class pricing_listController extends Controller
         ]) ;
          // insert data to roomsAvailable table and get roomAvailable ID to used it to pricing_list table
       
-         $room_available = new room_available();
-         $room_available->date_from = $request->get('date_from');
-         $room_available->date_to = $request->get('date_to');
-         $room_available->room_id = $request->get('room_id');
-         $room_available->save();
-        
-         $room_available_id = $room_available->id;
-         
+      
          $pricing_list = new pricing_list();
          $pricing_list->nationality = json_encode($request->get('nationality'));
          $pricing_list->user_type = $request->get('user_type');
          $pricing_list->price_adult = $request->get('price_adult');
          $pricing_list->price_child = $request->get('price_child');
-         $pricing_list->room_available_id = $room_available_id;
          $pricing_list->save();
+         $price_listt_id = $pricing_list->id;
+
+         $room_available = new room_available();
+         $room_available->date_from = $request->get('date_from');
+         $room_available->date_to = $request->get('date_to');
+         $room_available->room_id = $request->get('room_id');
+         $room_available->price_list = $price_listt_id ;
+         
+         $room_available->save();
+        
 
          return redirect('dashboard/pricing_list')->with('success','Data Added');
     }
@@ -116,9 +118,9 @@ class pricing_listController extends Controller
      */
     public function destroy($id)
     {
-        $room_available = room_available::find($id);
-        $room_available->delete();
+        $pricing_list = pricing_list::find($id);
+        $pricing_list->delete();
 
-      return redirect()->back()->with('success','Role Deeleted');
+        return redirect()->back()->with('success','Role Deeleted');
     }
 }

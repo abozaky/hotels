@@ -49,21 +49,27 @@
           </ul>
           <form action="{{ route('Rooms.store') }}" method="post" enctype="multipart/form-data">
             @csrf
-              <div class="edit" style="margin:13px; margin-bottom:0px" >
-                <div class=" form-group">
-                <label for="exampleInputEmail1">Room Number</label>
-                  <input type="number" class="form-control" name="room_number" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Room Number">
+                <div class="edit" style="margin:13px; margin-bottom:0px" >
+                  <div class=" form-group">
+                    <label for="exampleInputEmail1">Room Number</label>
+                    <input type="number" class="form-control" name="room_number" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Room Number">
+                    <input type="hidden" class="form-control" name="hotel_id" value="{{$hotelID}}">
+                  </div>
                 </div>
-                <div class=" form-group">
-                  <label for="exampleInputEmail1">Price night adult</label>
-                  <input type="number" class="form-control" name="price_adult" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Price adult">
-                </div>
-                <div class=" form-group">
-                  <label for="exampleInputEmail1">Price night child</label>
-                  <input type="number" class="form-control" name="price_child" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Price Child">
-                  <input type="hidden" class="form-control" name="hotel_id" value="{{$hotelID}}">
-                </div>
-                
+                <div class="edit" style="margin:13px; margin-bottom:0px" >
+                  <label for="countries">Select Bed </label>
+                  <select class="form-control" name="bed" id="countries">
+                    <option value="single">single</option>
+                    <option value="double">double</option>
+                    <option value="triple">triple</option>
+                  </select>
+              </div>
+                <div class="edit" style="margin:13px; margin-bottom:0px" >
+                  <label for="countries">Select Room Type </label>
+                  <select class="form-control" name="room_type" id="countries">
+                    <option value="standar">standar</option>
+                    <option value="delux">delux</option>
+                  </select>
               </div>
               <div class="tab-content">
                  @foreach ($languages as $language )

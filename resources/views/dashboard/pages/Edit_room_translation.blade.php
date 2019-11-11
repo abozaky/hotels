@@ -56,14 +56,6 @@
                 <label for="exampleInputEmail1">Room Number</label>
                 <input type="number" class="form-control" value="{{$Room->room_number}}" name="room_number" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Room Number">
                 </div>
-                <div class=" form-group">
-                  <label for="exampleInputEmail1">Price night adult</label>
-                  <input type="number" class="form-control" value="{{$Room->price_adult}}" name="price_adult" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Price adult">
-                </div>
-                <div class=" form-group">
-                  <label for="exampleInputEmail1">Price night child</label>
-                  <input type="number" class="form-control" value="{{$Room->price_child}}" name="price_child" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Price Child">
-                </div>
               </div>
               <div class="tab-content">
                  @foreach ($RoomTranslation as $RoomT )

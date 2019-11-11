@@ -19,6 +19,8 @@ class CreateRoomAvailablesTable extends Migration
             $table->date('date_to')->nullable();
             $table->unsignedBigInteger('room_id');
             $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('price_list');
+            $table->foreign('price_list')->references('id')->on('pricing_lists')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

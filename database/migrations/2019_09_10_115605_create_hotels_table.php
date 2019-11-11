@@ -17,11 +17,15 @@ class CreateHotelsTable extends Migration
             $table->bigIncrements('id');
             $table->longText('photos');
             $table->tinyInteger('stars');
+            $table->longText('hotel_facilities')->nullable();
+            $table->double('Latitude')->default(29.9821647)	;	
+            $table->double('Longitude')->default(31.2862193)	;	
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('city_id');
             $table->foreign('city_id')->references('id')->on('cities')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
+            
         });
     }
 

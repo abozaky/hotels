@@ -29,7 +29,7 @@
     </ol>
   </section>
  <!-- Main content -->
- <section class="content">
+ <section class="content" style="overflow:hidden;">
     <div class="row">
         <div class="col-xs-12">
             @if ($errors->any())

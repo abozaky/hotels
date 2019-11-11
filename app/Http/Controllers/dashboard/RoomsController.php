@@ -52,8 +52,8 @@ class RoomsController extends Controller
         $request->validate([
 
             'room_number'                 => 'required|numeric' ,
-            'price_adult'                 => 'required|numeric' ,
-            'price_child'                 => 'required|numeric' ,
+            'bed'                         => 'required|string' ,
+            'room_type'                   => 'required|string' ,
             'hotel_id'                    => 'required|numeric' ,
             'locale=En'                   => 'required|string'  ,
             'name=En'                     => 'required|string'  ,
@@ -69,14 +69,16 @@ class RoomsController extends Controller
         // insert data to rooms table and get room ID to used it to room_translation table
             $Room = new Room();
             $Room->room_number = $request->get('room_number');
-            $Room->price_adult = $request->get('price_adult');
-            $Room->price_child = $request->get('price_child');
-            $Room->hotel_id = $request->get('hotel_id');
+            $Room->bed         = $request->get('bed');
+            $Room->room_type   = $request->get('room_type');
+            $Room->hotel_id    = $request->get('hotel_id');
             $Room->save();
             $currentId = $Room->id;
+
         // insert data to hotel_translation by Hotel_id
 
             $languages = Localization::all();
+
             foreach ($languages as $language) {
 
                 $RoomTranslation = new RoomTranslation();
@@ -120,8 +122,6 @@ class RoomsController extends Controller
          $Room = Room::find($id);
 
          $Room->room_number = $request->get('room_number');
-         $Room->price_adult = $request->get('price_adult');
-         $Room->price_child = $request->get('price_child');
          $Room->save();
 
          $languages = Localization::all();
