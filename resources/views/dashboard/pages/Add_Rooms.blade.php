@@ -58,7 +58,7 @@
                 </div>
                 <div class="edit" style="margin:13px; margin-bottom:0px" >
                   <label for="countries">Select Bed </label>
-                  <select class="form-control" name="bed" id="countries">
+                  <select class="form-control" name="bed">
                     <option value="single">single</option>
                     <option value="double">double</option>
                     <option value="triple">triple</option>
@@ -66,7 +66,7 @@
               </div>
                 <div class="edit" style="margin:13px; margin-bottom:0px" >
                   <label for="countries">Select Room Type </label>
-                  <select class="form-control" name="room_type" id="countries">
+                  <select class="form-control" name="room_type">
                     <option value="standar">standar</option>
                     <option value="delux">delux</option>
                   </select>
