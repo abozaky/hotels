@@ -5,6 +5,8 @@ namespace App\Http\Controllers\api;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 // url="http://localhost/hotels/public/api/" change in localhost 
+// url="http://hotels360.herokuapp.com/api/"
+
 /**
  * 
  * @OA\Info(
