@@ -8,7 +8,6 @@
   * [Installation](#installation)
 * [Contact](#contact)
 
-https://file.fm/u/pkettxgs
 
 
 <!-- ABOUT THE PROJECT -->
@@ -19,7 +18,8 @@ https://file.fm/u/pkettxgs
 
 ## Hotel Management System (dashboard and api to mobile app)
 
-* allow add hotels and rooms 
+* Dashboard username:admin@gmail.com & password 1-8
+* allow add hotels and rooms (Dashboard Link : [http://hotels360.herokuapp.com] )
 * allow add pricing list for rooms by specific date range
 * allow Search and filter by room available , date , adults , room type and other
 * allow login by facebook  
@@ -72,7 +72,6 @@ Run the database migrations (**Set the database connection in .env before migrat
 * Set manual localization in table  En and Ar to show all data when insert data from dashboard like add_hotel
 * change @OA\Server SwaggerController (url) to "localhost/hotels/public/api/" 
 * change url function (select box - ajax) in path  public\js\dashboard\coustom to url: '/hotels/public/dashboard/ajaxRequest/'+val, 
-* Dashboard username:admin - password 1-8
 
 <!-- CONTACT -->
 ## Contact
